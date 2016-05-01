@@ -27,11 +27,14 @@ public class WebViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
-        WebView myWebView = (WebView) view.findViewById(R.id.webview);
-        myWebView.setWebViewClient(new WebViewClient());
-        WebSettings webSettings = myWebView.getSettings();
+        WebView webView = (WebView) view.findViewById(R.id.webview);
+        webView.setWebViewClient(new WebViewClient());
+        webView.addJavascriptInterface(new WebAppInterface(this.getContext()), "Android");
+        WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        myWebView.loadUrl(URL);
+        webSettings.setSupportZoom(true);
+        //webView.loadUrl(URL);
+        webView.loadUrl("file:///android_asset/test.html");
         return view;
     }
 
