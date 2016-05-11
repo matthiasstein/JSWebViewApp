@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <!--<item android:title="Basemap">
+        <menu>-->
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_streets"
@@ -10,8 +11,21 @@
             android:id="@+id/nav_topo"
             android:icon="@drawable/ic_launch_black_48dp"
             android:title="@string/topo" />
+        <item
+            android:id="@+id/nav_satellite"
+            android:icon="@drawable/ic_launch_black_48dp"
+            android:title="@string/satellite" />
+        <item
+            android:id="@+id/nav_light_gray"
+            android:icon="@drawable/ic_launch_black_48dp"
+            android:title="@string/light_gray" />
+        <item
+            android:id="@+id/nav_dark_gray"
+            android:icon="@drawable/ic_launch_black_48dp"
+            android:title="@string/dark_gray" />
     </group>
-
+    <!--</menu>
+</item>-->
     <item android:title="Communicate">
         <menu>
             <item

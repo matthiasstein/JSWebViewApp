@@ -100,6 +100,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_topo) {
             if (fragment != null)
                 fragment.changeBasemap("topo");
+        } else if (id == R.id.nav_satellite) {
+            if (fragment != null)
+                fragment.changeBasemap("satellite");
+        } else if (id == R.id.nav_light_gray) {
+            if (fragment != null)
+                fragment.changeBasemap("gray");
+        } else if (id == R.id.nav_dark_gray) {
+            if (fragment != null)
+                fragment.changeBasemap("dark-gray");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

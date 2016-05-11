@@ -4,7 +4,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="streets">Streets</string>
-    <string name="topo">Topo</string>
+    <string name="topo">Topographic</string>
+    <string name="satellite">Satellite</string>
+    <string name="light_gray">Light Gray</string>
+    <string name="dark_gray">Dark Gray</string>
     <string name="name">Sebastian Drost and Matthias Stein</string>
     <string name="name2">Hochschule Bochum</string>
 
