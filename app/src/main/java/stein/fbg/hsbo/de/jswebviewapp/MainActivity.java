@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
+            navigationView.getMenu().findItem(R.id.nav_map).setChecked(true);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.content_frame, new WebViewFragment(), "fragment");
@@ -92,19 +93,8 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        if (id == R.id.nav_website) {
-            // Handle the camera action
+        if (id == R.id.nav_map) {
             transaction.replace(R.id.content_frame, new WebViewFragment(), "fragment");
-        /*} else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {*/
-
         }
 
         transaction.commit();
