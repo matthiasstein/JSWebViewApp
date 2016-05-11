@@ -12,4 +12,12 @@
     <string name="name2">Hochschule Bochum</string>
 
     <string name="action_settings">Einstellungen</string>
+    <string name="feature_selection">Wähle Features</string>
+    <string name="selection_mode">Auswahlmodus</string>
+
+    <string-array name="array_selection_mode">
+        <item>Frei</item>
+        <item>Rechteck</item>
+        <item>Kreis</item>
+    </string-array>
 </resources>
