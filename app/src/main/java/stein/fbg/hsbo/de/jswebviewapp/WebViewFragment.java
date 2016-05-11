@@ -12,21 +12,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WebViewFragment extends Fragment {
-
-    private static String URL = "https://developers.arcgis.com/javascript/beta/sample-code/satellites-3d/live/index.html";
 
     public WebViewFragment() {
         // Required empty public constructor
