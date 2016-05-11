@@ -12,7 +12,8 @@ require([
     zoom: 4,  // Sets the zoom level based on level of detail (LOD)
     center: [15, 65]  // Sets the center point of view in lon/lat
   });
-  function changeBasemap(){
-      this.map.basemap = "topo";
+  function changeBasemap(basemap){
+      this.map.basemap = basemap;
   }
+  window.changeBasemap = changeBasemap;
 });

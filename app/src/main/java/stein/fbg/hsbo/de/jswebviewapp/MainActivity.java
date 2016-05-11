@@ -29,12 +29,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                FragmentManager fm = getSupportFragmentManager();
-                WebViewFragment fragment = (WebViewFragment) fm.findFragmentByTag("fragment");
-                if (fragment != null)
-                    fragment.changeBasemap("topo");
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 
@@ -48,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-            navigationView.getMenu().findItem(R.id.nav_map).setChecked(true);
+            navigationView.getMenu().findItem(R.id.nav_streets).setChecked(true);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.content_frame, new WebViewFragment(), "fragment");
@@ -94,14 +90,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        if (id == R.id.nav_map) {
-            transaction.replace(R.id.content_frame, new WebViewFragment(), "fragment");
+        FragmentManager fm = getSupportFragmentManager();
+        WebViewFragment fragment = (WebViewFragment) fm.findFragmentByTag("fragment");
+
+        if (id == R.id.nav_streets) {
+            if (fragment != null)
+                fragment.changeBasemap("streets");
+        } else if (id == R.id.nav_topo) {
+            if (fragment != null)
+                fragment.changeBasemap("topo");
         }
-
-        transaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

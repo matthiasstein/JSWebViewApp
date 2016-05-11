@@ -49,7 +49,7 @@ public class WebViewFragment extends Fragment {
     }
 
     public void changeBasemap(String basemap) {
-        webView.loadUrl("javascript:changeBasemap()");
+        webView.loadUrl("javascript:changeBasemap('" + basemap + "')");
     }
 
     private String readHtml(String fileName) {
@@ -78,7 +78,6 @@ public class WebViewFragment extends Fragment {
         }
         return out;
     }
-
 
 
 }
