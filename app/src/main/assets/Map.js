@@ -3,7 +3,7 @@ require([
   "esri/views/MapView",
   "dojo/domReady!"
 ], function(Map, MapView){
-  var map = new Map({
+  var map = this.map = new Map({
     basemap: "streets"
   });
   var view = new MapView({
@@ -12,4 +12,7 @@ require([
     zoom: 4,  // Sets the zoom level based on level of detail (LOD)
     center: [15, 65]  // Sets the center point of view in lon/lat
   });
+  function changeBasemap(){
+      this.map.basemap = "topo";
+  }
 });

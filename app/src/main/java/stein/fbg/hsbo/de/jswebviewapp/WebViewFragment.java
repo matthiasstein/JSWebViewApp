@@ -23,6 +23,8 @@ import java.net.MalformedURLException;
  */
 public class WebViewFragment extends Fragment {
 
+    WebView webView;
+
     public WebViewFragment() {
         // Required empty public constructor
     }
@@ -31,7 +33,7 @@ public class WebViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
-        WebView webView = (WebView) view.findViewById(R.id.webview);
+        webView = (WebView) view.findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
         webView.addJavascriptInterface(new WebAppInterface(this.getContext()), "Android");
         WebSettings webSettings = webView.getSettings();
@@ -44,6 +46,10 @@ public class WebViewFragment extends Fragment {
         //String html = readHtml("esri.html");
         //webView.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", null);
         return view;
+    }
+
+    public void changeBasemap(String basemap) {
+        webView.loadUrl("javascript:changeBasemap()");
     }
 
     private String readHtml(String fileName) {
