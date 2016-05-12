@@ -22,6 +22,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
 
+    int SELECTIONMODE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,6 +139,7 @@ public class MainActivity extends AppCompatActivity
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
+        SELECTIONMODE = pos;
         String item = (String) parent.getItemAtPosition(pos);
         String toastContent = "Selection Mode Changed: " + item;
         Toast toast = Toast.makeText(getApplicationContext(), toastContent, Toast.LENGTH_LONG);
@@ -150,7 +153,20 @@ public class MainActivity extends AppCompatActivity
     public void onSelectButtonClicked(View v) {
         FragmentManager fm = getSupportFragmentManager();
         WebViewFragment fragment = (WebViewFragment) fm.findFragmentByTag("fragment");
-        fragment.selectFeatures();
+        switch(SELECTIONMODE) {
+            case 0:
+                fragment.selectFeatures("FREEHAND_POLYGON");
+                break;
+            case 1:
+                fragment.selectFeatures("RECTANGLE");
+                break;
+            case 2:
+                fragment.selectFeatures("CIRCLE");
+                break;
+            default:
+                fragment.selectFeatures("FREEHAND_POLYGON");
+        }
+
     }
 
 }

@@ -52,6 +52,10 @@ public class WebViewFragment extends Fragment {
         webView.loadUrl("javascript:changeBasemap('" + basemap + "')");
     }
 
+    public void selectFeatures(String mode){
+        webView.loadUrl("javascript:activateTool('" + mode + "')");
+    }
+
     private String readHtml(String fileName) {
         AssetManager am = getContext().getAssets();
         String out = "";
@@ -78,12 +82,4 @@ public class WebViewFragment extends Fragment {
         }
         return out;
     }
-
-    public void selectFeatures(){
-        webView.loadUrl("javascript:activateTool()");
-    }
-
-
-
-
 }
