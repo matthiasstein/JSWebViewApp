@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity
         // An item was selected. You can retrieve the selected item using
         SELECTIONMODE = pos;
         String item = (String) parent.getItemAtPosition(pos);
-        String toastContent = "Selection Mode Changed: " + item;
+        String toastContent = getString(R.string.selection_mode_changed) + " " + item;
         Toast toast = Toast.makeText(getApplicationContext(), toastContent, Toast.LENGTH_LONG);
         toast.show();
     }
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity
     public void onSelectButtonClicked(View v) {
         FragmentManager fm = getSupportFragmentManager();
         WebViewFragment fragment = (WebViewFragment) fm.findFragmentByTag("fragment");
-        switch(SELECTIONMODE) {
+        switch (SELECTIONMODE) {
             case 0:
                 fragment.selectFeatures("FREEHAND_POLYGON");
                 break;
