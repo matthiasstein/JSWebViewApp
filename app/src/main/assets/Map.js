@@ -3,12 +3,14 @@ require([
   "esri/toolbars/draw",
   "esri/graphic",
 
+   "esri/layers/FeatureLayer",
+
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
 
   "dojo/domReady!"
-], function(Map,Draw, Graphic,SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol){
+], function(Map,Draw, Graphic,FeatureLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol){
  var toolbar;
  var map = this.map = new Map("mapDiv", {
     center: [-56.049, 38.485],
@@ -16,6 +18,15 @@ require([
     basemap: "streets"
 });
   map.on("load", createToolbar);
+
+  var featureLayer = new FeatureLayer("http://services2.arcgis.com/lKwB42uXpb8Mwu4v/arcgis/rest/services/geschaefte/FeatureServer/0");
+
+var startExtent = new esri.geometry.Extent(7.05, 51.25, 7.45, 51.65,
+          new esri.SpatialReference({wkid:4326}) );
+
+      map.setExtent(startExtent);
+      map.addLayer(featureLayer);
+
 
 
   function changeBasemap(basemap){
