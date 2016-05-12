@@ -79,5 +79,11 @@ public class WebViewFragment extends Fragment {
         return out;
     }
 
+    public void selectFeatures(){
+        webView.loadUrl("javascript:activateTool()");
+    }
+
+
+
 
 }

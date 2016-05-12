@@ -137,14 +137,20 @@ public class MainActivity extends AppCompatActivity
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
-        String item=(String)parent.getItemAtPosition(pos);
-        String toastContent="Selection Mode Changed: "+item;
+        String item = (String) parent.getItemAtPosition(pos);
+        String toastContent = "Selection Mode Changed: " + item;
         Toast toast = Toast.makeText(getApplicationContext(), toastContent, Toast.LENGTH_LONG);
         toast.show();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    public void onSelectButtonClicked(View v) {
+        FragmentManager fm = getSupportFragmentManager();
+        WebViewFragment fragment = (WebViewFragment) fm.findFragmentByTag("fragment");
+        fragment.selectFeatures();
     }
 
 }
