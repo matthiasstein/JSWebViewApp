@@ -24,4 +24,12 @@ public class WebAppInterface {
     public void showToast(String toast) {
         Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * Handles the JSON representation of features
+     */
+    @JavascriptInterface
+    public void handleJsonFeatures(String [] features) {
+        Toast.makeText(mContext, features[0], Toast.LENGTH_SHORT).show();
+    }
 }
