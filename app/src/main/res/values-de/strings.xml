@@ -18,7 +18,7 @@
     <string name="selection_mode">Auswahlmodus</string>
     <string name="selection_mode_changed">Auswahlmodus geändert:</string>
     <string name="selected">Features selektiert!</string>
-    <string name="no_data">Keine Daten...</string>
+    <string name="no_data">Keine Features selektiert...</string>
 
     <string-array name="array_selection_mode">
         <item>Frei</item>
