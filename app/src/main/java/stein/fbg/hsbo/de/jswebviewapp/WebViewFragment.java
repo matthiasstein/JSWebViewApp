@@ -1,10 +1,8 @@
 package stein.fbg.hsbo.de.jswebviewapp;
 
-
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +46,6 @@ public class WebViewFragment extends Fragment implements View.OnClickListener,Ad
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setSupportZoom(true);
-        //webView.loadUrl(URL);
         //webView.loadUrl("file:///android_asset/test.html");
         webView.loadUrl("file:///android_asset/esri.html");
         loadSpinner();
