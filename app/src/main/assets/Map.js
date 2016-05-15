@@ -1,5 +1,6 @@
 require([
     "esri/map",
+      "esri/dijit/HomeButton",
     "esri/toolbars/draw",
     "esri/graphic",
 
@@ -15,7 +16,7 @@ require([
 
 
     "dojo/domReady!"
-], function(Map, Draw, Graphic, FeatureLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Query, QueryTask, Color) {
+], function(Map,HomeButton, Draw, Graphic, FeatureLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Query, QueryTask, Color) {
     var toolbar, selectionToolbar;
     var featureServiceURL = "http://services2.arcgis.com/lKwB42uXpb8Mwu4v/arcgis/rest/services/POIs_Wattenscheid/FeatureServer/8";
     var map = this.map = new Map("mapDiv", {
@@ -24,6 +25,11 @@ require([
         basemap: "streets"
     });
     map.on("load", createToolbar);
+
+    var home = new HomeButton({
+            map: map
+          }, "HomeButton");
+          home.startup();
 
     var featureLayer = new FeatureLayer(featureServiceURL);
     var selectionSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 8,
