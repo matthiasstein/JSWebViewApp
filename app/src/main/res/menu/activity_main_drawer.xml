@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<item android:title="Basemap">
-        <menu>-->
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/fragments"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_streets"
-            android:icon="@drawable/ic_launch_black_48dp"
-            android:title="@string/streets" />
+            android:id="@+id/nav_map"
+            android:checked="true"
+            android:icon="@drawable/ic_settings_overscan_black_48dp"
+            android:title="@string/map" />
         <item
-            android:id="@+id/nav_topo"
-            android:icon="@drawable/ic_launch_black_48dp"
-            android:title="@string/topo" />
-        <item
-            android:id="@+id/nav_satellite"
-            android:icon="@drawable/ic_launch_black_48dp"
-            android:title="@string/satellite" />
-        <item
-            android:id="@+id/nav_light_gray"
-            android:icon="@drawable/ic_launch_black_48dp"
-            android:title="@string/light_gray" />
-        <item
-            android:id="@+id/nav_dark_gray"
-            android:icon="@drawable/ic_launch_black_48dp"
-            android:title="@string/dark_gray" />
+            android:id="@+id/nav_features"
+            android:icon="@drawable/ic_list_black_48dp"
+            android:title="@string/features" />
     </group>
-    <!--</menu>
-</item>-->
-    <item android:title="Communicate">
+    <item android:title="Basemap">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_streets"
+                android:icon="@drawable/ic_launch_black_48dp"
+                android:title="@string/streets"
+                android:checked="true"/>
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_topo"
+                android:icon="@drawable/ic_launch_black_48dp"
+                android:title="@string/topo" />
+            <item
+                android:id="@+id/nav_satellite"
+                android:icon="@drawable/ic_launch_black_48dp"
+                android:title="@string/satellite" />
+            <item
+                android:id="@+id/nav_light_gray"
+                android:icon="@drawable/ic_launch_black_48dp"
+                android:title="@string/light_gray" />
+            <item
+                android:id="@+id/nav_dark_gray"
+                android:icon="@drawable/ic_launch_black_48dp"
+                android:title="@string/dark_gray" />
         </menu>
     </item>
-
 </menu>

@@ -3,6 +3,8 @@
 
     <string name="navigation_drawer_open">Navigation Drawer öffnen</string>
     <string name="navigation_drawer_close">Navigation Drawer schließen</string>
+    <string name="map">Karte</string>
+    <string name="features">Selektierte Features</string>
     <string name="streets">Staßenkarte</string>
     <string name="topo">Topografie</string>
     <string name="satellite">Satellit</string>
@@ -15,6 +17,8 @@
     <string name="feature_selection">Wähle Features</string>
     <string name="selection_mode">Auswahlmodus</string>
     <string name="selection_mode_changed">Auswahlmodus geändert:</string>
+    <string name="selected">Features selektiert!</string>
+    <string name="no_data">Keine Daten...</string>
 
     <string-array name="array_selection_mode">
         <item>Frei</item>

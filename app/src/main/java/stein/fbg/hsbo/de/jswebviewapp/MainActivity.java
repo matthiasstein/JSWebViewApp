@@ -1,11 +1,9 @@
 package stein.fbg.hsbo.de.jswebviewapp;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,14 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static ArrayList<Feature> featureList = new ArrayList<Feature>();
+    private MenuItem previousSelectedBasemapMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +36,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        previousSelectedBasemapMenuItem = navigationView.getMenu().findItem(R.id.nav_streets);
 
         if (savedInstanceState == null) {
-            navigationView.getMenu().findItem(R.id.nav_streets).setChecked(true);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_frame, new WebViewFragment(), "fragment");
+            transaction.add(R.id.content_frame, new WebViewFragment(), "map_fragment");
+            transaction.add(R.id.content_frame, new FeatureListFragment(), "feature_fragment");
             transaction.commit();
         }
 
@@ -89,29 +88,66 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         FragmentManager fm = getSupportFragmentManager();
-        WebViewFragment fragment = (WebViewFragment) fm.findFragmentByTag("fragment");
+        FragmentTransaction transaction = fm.beginTransaction();
 
-        if (id == R.id.nav_streets) {
-            if (fragment != null)
-                fragment.changeBasemap("streets");
+        WebViewFragment webViewFragment = (WebViewFragment) fm.findFragmentByTag("map_fragment");
+        FeatureListFragment featureListFragment = (FeatureListFragment) fm.findFragmentByTag("feature_fragment");
+
+        if (id == R.id.nav_map) {
+            hideAllFragments();
+            transaction.show(webViewFragment);
+        } else if (id == R.id.nav_features) {
+            hideAllFragments();
+            transaction.show(featureListFragment);
+            refreshFeatureList();
+        } else if (id == R.id.nav_streets) {
+            previousSelectedBasemapMenuItem.setChecked(false);
+            previousSelectedBasemapMenuItem = item;
+            item.setChecked(true);
+            webViewFragment.changeBasemap("streets");
         } else if (id == R.id.nav_topo) {
-            if (fragment != null)
-                fragment.changeBasemap("topo");
+            previousSelectedBasemapMenuItem.setChecked(false);
+            previousSelectedBasemapMenuItem = item;
+            item.setChecked(true);
+            webViewFragment.changeBasemap("topo");
         } else if (id == R.id.nav_satellite) {
-            if (fragment != null)
-                fragment.changeBasemap("satellite");
+            previousSelectedBasemapMenuItem.setChecked(false);
+            previousSelectedBasemapMenuItem = item;
+            item.setChecked(true);
+            webViewFragment.changeBasemap("satellite");
         } else if (id == R.id.nav_light_gray) {
-            if (fragment != null)
-                fragment.changeBasemap("gray");
+            previousSelectedBasemapMenuItem.setChecked(false);
+            previousSelectedBasemapMenuItem = item;
+            item.setChecked(true);
+            webViewFragment.changeBasemap("gray");
         } else if (id == R.id.nav_dark_gray) {
-            if (fragment != null)
-                fragment.changeBasemap("dark-gray");
+            previousSelectedBasemapMenuItem.setChecked(false);
+            previousSelectedBasemapMenuItem = item;
+            item.setChecked(true);
+            webViewFragment.changeBasemap("dark-gray");
         }
 
+        transaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    public void hideAllFragments() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        for (Fragment fragment : fm.getFragments()) {
+            if (fragment.isVisible()) {
+                transaction.hide(fragment);
+            }
+        }
+        transaction.commit();
+    }
 
+    public void refreshFeatureList() {
+        FragmentManager fm = getSupportFragmentManager();
+        FeatureListFragment fragment = (FeatureListFragment) fm.findFragmentByTag("feature_fragment");
+        if (fragment != null)
+            fragment.refresh();
+    }
 }

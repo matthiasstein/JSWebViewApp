@@ -4,6 +4,8 @@ import android.content.Context;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by Mattes on 01.05.2016.
  */
@@ -29,7 +31,13 @@ public class WebAppInterface {
      * Handles the JSON representation of features
      */
     @JavascriptInterface
-    public void handleJsonFeatures(String [] features) {
-        Toast.makeText(mContext, features[0], Toast.LENGTH_SHORT).show();
+    public void handleJsonFeatures(String[] features) {
+        ArrayList featureList = MainActivity.featureList;
+        featureList.clear();
+        for (String s : features) {
+            Feature feature = new Feature(s);
+            featureList.add(feature);
+        }
+        Toast.makeText(mContext, features.length + " " + mContext.getString(R.string.selected), Toast.LENGTH_SHORT).show();
     }
 }
