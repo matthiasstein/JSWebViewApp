@@ -14,9 +14,8 @@ require([
     "esri/tasks/QueryTask",
     "esri/Color",
 
-
     "dojo/domReady!"
-], function(Map,HomeButton, Draw, Graphic, FeatureLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Query, QueryTask, Color) {
+], function(Map, HomeButton, Draw, Graphic, FeatureLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Query, QueryTask, Color) {
     var toolbar, selectionToolbar;
     var featureServiceURL = "http://services2.arcgis.com/lKwB42uXpb8Mwu4v/arcgis/rest/services/POIs_Wattenscheid/FeatureServer/8";
     var map = this.map = new Map("mapDiv", {
@@ -27,9 +26,9 @@ require([
     map.on("load", createToolbar);
 
     var home = new HomeButton({
-            map: map
-          }, "HomeButton");
-          home.startup();
+        map: map
+    }, "HomeButton");
+    home.startup();
 
     var featureLayer = new FeatureLayer(featureServiceURL);
     var selectionSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 8,
@@ -90,18 +89,11 @@ require([
         query.returnGeometry = true;
         query.geometry = inputGraphic.geometry;
         query.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
-        //queryTask.executeForCount(query, showCountResult);
         queryTask.execute(query, showFeatureResults);
         featureLayer.selectFeatures(query,
             FeatureLayer.SELECTION_NEW);
     }
 
-    function showCountResult(count) {
-        map.graphics.clear();
-        Android.showToast(count + " features selected");
-    }
-
-    //This method will be use soon...
     function showFeatureResults(featureSet) {
         //remove all graphics on the maps graphics layer
         map.graphics.clear();
@@ -121,9 +113,9 @@ require([
         Android.handleJsonFeatures(jsonFeatures);
     }
 
-    	function showErrorInfo(){
-    	    Android.showErrorToast();
-    	}
+    function showErrorInfo() {
+        Android.showErrorToast();
+    }
 
     window.changeBasemap = changeBasemap;
     window.activateTool = activateTool;
