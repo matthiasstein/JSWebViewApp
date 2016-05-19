@@ -1,6 +1,6 @@
 require([
     "esri/map",
-      "esri/dijit/HomeButton",
+    "esri/dijit/HomeButton",
     "esri/toolbars/draw",
     "esri/graphic",
 
@@ -120,6 +120,10 @@ require([
         }
         Android.handleJsonFeatures(jsonFeatures);
     }
+
+    	function showErrorInfo(){
+    	    Android.showErrorToast();
+    	}
 
     window.changeBasemap = changeBasemap;
     window.activateTool = activateTool;

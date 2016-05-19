@@ -17,6 +17,7 @@
     <string name="feature_selection">Wähle Features</string>
     <string name="selection_mode">Auswahlmodus</string>
     <string name="selection_mode_changed">Auswahlmodus geändert:</string>
+    <string name="queryError">Featureabfrage war fehlerhaft</string>
     <string name="selected">Features selektiert!</string>
     <string name="no_data">Keine Features selektiert...</string>
 

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -25,6 +28,16 @@ public class WebAppInterface {
     @JavascriptInterface
     public void showToast(String toast) {
         Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Show an error toast from the web page
+     */
+    @JavascriptInterface
+    public void showErrorToast() {
+
+        String errorString= mContext.getString(R.string.queryError);
+        Toast.makeText(mContext, errorString, Toast.LENGTH_SHORT).show();
     }
 
     /**
