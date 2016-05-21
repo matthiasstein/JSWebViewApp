@@ -61,9 +61,7 @@ public class WebViewFragment extends Fragment implements View.OnClickListener,Ad
         webView.loadUrl("javascript:changeBasemap('" + basemap + "')");
     }
 
-    public void selectFeatures(String mode){
-        webView.loadUrl("javascript:activateTool('" + mode + "')");
-    }
+
 
     private void loadSpinner() {
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner_selection);
@@ -144,5 +142,9 @@ public class WebViewFragment extends Fragment implements View.OnClickListener,Ad
             default:
                 selectFeatures("FREEHAND_POLYGON");
         }
+    }
+
+    public void selectFeatures(String mode){
+        webView.loadUrl("javascript:activateTool('" + mode + "')");
     }
 }

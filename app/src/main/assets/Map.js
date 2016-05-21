@@ -52,7 +52,6 @@ require([
 
     function activateTool(mode) {
         toolbar.activate(Draw[mode]);
-        //selectionToolbar.activate(Draw.EXTENT);
         map.hideZoomSlider();
     }
 
@@ -62,21 +61,9 @@ require([
     }
 
     function addToMap(evt) {
-        var symbol;
         toolbar.deactivate();
         map.showZoomSlider();
-        switch (evt.geometry.type) {
-            case "point":
-            case "multipoint":
-                symbol = new SimpleMarkerSymbol();
-                break;
-            case "polyline":
-                symbol = new SimpleLineSymbol();
-                break;
-            default:
-                symbol = new SimpleFillSymbol();
-                break;
-        }
+        var symbol = new SimpleFillSymbol();
         var graphic = new Graphic(evt.geometry, symbol);
         map.graphics.add(graphic);
         queryFeatures(graphic);
@@ -89,7 +76,7 @@ require([
         query.returnGeometry = true;
         query.geometry = inputGraphic.geometry;
         query.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
-        queryTask.execute(query, showFeatureResults);
+        queryTask.execute(query, showFeatureResults, showErrorInfo);
         featureLayer.selectFeatures(query,
             FeatureLayer.SELECTION_NEW);
     }
@@ -98,7 +85,6 @@ require([
         //remove all graphics on the maps graphics layer
         map.graphics.clear();
 
-        //Performance enhancer - assign featureSet array to a single variable.
         var resultFeatures = featureSet.features;
 
         var jsonFeatures = [];
@@ -119,4 +105,6 @@ require([
 
     window.changeBasemap = changeBasemap;
     window.activateTool = activateTool;
+
+
 });

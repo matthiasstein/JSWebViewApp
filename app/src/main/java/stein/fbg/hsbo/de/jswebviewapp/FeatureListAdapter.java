@@ -49,11 +49,34 @@ public class FeatureListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.feature_list_item, null);
         }
 
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
+        TextView txtName = (TextView) convertView.findViewById(R.id.name);
+        TextView txtType = (TextView) convertView.findViewById(R.id.type);
+        ImageView typeImage=(ImageView) convertView.findViewById(R.id.typeImage);
 
         Feature feature = featureList.get(position);
         // set the title
-        txtTitle.setText(feature.getTitle());
+        txtName.setText(feature.getName());
+        txtType.setText(feature.getType());
+        switch (feature.getType()){
+            case "Apotheke":
+                typeImage.setImageResource(R.drawable.apotheke);
+                break;
+            case "Baecker":
+                typeImage.setImageResource(R.drawable.baecker);
+                break;
+            case "Friseur":
+                typeImage.setImageResource(R.drawable.friseur);
+                break;
+            case "Lebensmittel":
+                typeImage.setImageResource(R.drawable.lebensmittel);
+                break;
+            case "Trinkhalle":
+                typeImage.setImageResource(R.drawable.trinkhalle);
+                break;
+            default:
+                typeImage.setImageResource(R.drawable.shopping);
+                break;
+        }
 
         return convertView;
     }
